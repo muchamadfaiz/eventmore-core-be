@@ -14,6 +14,13 @@ async function init() {
 
     const port = 3000;
 
+    app.get("/", (req, res) => {
+      res.status(200).json({
+        message: "Server is running",
+        data: null,
+      });
+    });
+
     app.listen(port, () => {
       console.log(`Server is running on http://localhost:${port}`);
     });
