@@ -104,6 +104,37 @@
           }
         ]
       }
+    },
+    "/auth/activation": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivationRequest"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivationRequest"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -135,27 +166,39 @@
         "properties": {
           "fullName": {
             "type": "string",
-            "example": "any"
+            "example": "Faiz Gembil"
           },
           "username": {
             "type": "string",
-            "example": "any"
+            "example": "faiz2024"
           },
           "email": {
             "type": "string",
-            "example": "any"
+            "example": "faiz2024@yopmail.com"
           },
           "password": {
             "type": "string",
-            "example": "any"
+            "example": "12341234"
           },
           "confirmPassword": {
             "type": "string",
-            "example": "any"
+            "example": "12341234"
           }
         },
         "xml": {
           "name": "RegisterRequest"
+        }
+      },
+      "ActivationRequest": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "ABCDEF"
+          }
+        },
+        "xml": {
+          "name": "ActivationRequest"
         }
       }
     }
