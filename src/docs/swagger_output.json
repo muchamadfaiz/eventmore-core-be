@@ -18,6 +18,9 @@
   "paths": {
     "/auth/register": {
       "post": {
+        "tags": [
+          "Auth"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -26,11 +29,29 @@
           "400": {
             "description": "Bad Request"
           }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            }
+          }
         }
       }
     },
     "/auth/login": {
       "post": {
+        "tags": [
+          "Auth"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -62,6 +83,9 @@
     },
     "/auth/me": {
       "get": {
+        "tags": [
+          "Auth"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -104,6 +128,34 @@
         },
         "xml": {
           "name": "LoginRequest"
+        }
+      },
+      "RegisterRequest": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string",
+            "example": "any"
+          },
+          "username": {
+            "type": "string",
+            "example": "any"
+          },
+          "email": {
+            "type": "string",
+            "example": "any"
+          },
+          "password": {
+            "type": "string",
+            "example": "any"
+          },
+          "confirmPassword": {
+            "type": "string",
+            "example": "any"
+          }
+        },
+        "xml": {
+          "name": "RegisterRequest"
         }
       }
     }

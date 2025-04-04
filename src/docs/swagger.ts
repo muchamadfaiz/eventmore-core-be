@@ -28,6 +28,13 @@ const doc = {
         identifier: "muchamadfaiz",
         password: "12341234",
       },
+      RegisterRequest: {
+        fullName: "any",
+        username: "any",
+        email: "any",
+        password: "any",
+        confirmPassword: "any",
+      },
     },
   },
 };
