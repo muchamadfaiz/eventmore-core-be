@@ -62,10 +62,14 @@ export default {
   },
 
   async login(req: Request, res: Response) {
-    // ambil data user berdasarkan identifier -> email dan username
+    /**
+     #swagger.requestBody = {
+     required:true,
+     schema: {$ref:"#/components/schemas/LoginRequest"}
+     }
+     */
     const { identifier, password } = req.body as unknown as TLogin;
     try {
-      //  validasi password
       const userByIdentifier = await UserModel.findOne({
         $or: [{ email: identifier }, { username: identifier }],
       });
@@ -104,6 +108,11 @@ export default {
   },
 
   async me(req: IReqUser, res: Response) {
+    /**
+     *#swagger.security =[{
+     "bearerAuth":[]
+     }]
+     */
     try {
       const user = req.user;
       const result = await UserModel.findById(user?.id);
